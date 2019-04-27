@@ -1,0 +1,33 @@
+
+<p>
+<strong>Edificio:</strong>
+<%= @payment.building %>
+</p>
+
+<p>
+<strong>Unidad:</strong>
+<%= @payment.unit %>
+</p>
+
+<p>
+<strong>Fecha:</strong>
+<%= @payment.date %>
+</p>
+
+<p>
+<strong>Nombre:</strong>
+<%= @payment.name %>
+</p>
+
+<p>
+<strong>Monto:</strong>
+<%= @payment.amount %>
+</p>
+
+<p>
+<strong>Comentarios:</strong>
+<%= @payment.comments %>
+</p>
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

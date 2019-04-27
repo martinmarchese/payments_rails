@@ -1,0 +1,53 @@
+<%= form_with model: @payment, local: true do |form| %>
+ 
+    <% if @payment.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@payment.errors.count, "error") %> prohibited
+          this payment from being saved:
+        </h2>
+        <ul>
+          <% @payment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+   
+    <p>
+    <%= form.label :building %><br>
+    <%= form.select :building, options_for_select(Building.all.map{|b| [b.formatted_name, b.id] }) %>
+    </p>
+
+    <p>
+        <%= form.label :unit %><br>
+        <%= form.text_field :unit %>
+    </p>
+
+    <p>
+        <%= form.label :date %><br>
+        <%= form.date_field :date, :id => "datepicker"%>
+    </p>
+
+    <p>
+        <%= form.label :name %><br>
+        <%= form.text_field :name %>
+    </p>
+
+    <p>
+        <%= form.label :amount %><br>
+        <%= form.text_field :amount %>
+    </p>
+
+    <p>
+        <%= form.label :comments %><br>
+        <%= form.text_area :comments %>
+    </p>
+
+    <p>
+    <%= form.submit %>
+    </p>
+   
+  <% end %>
+
+  <script> $('#datepicker').datepicker({format: 'dd/mm/yyyy'}); </script>
