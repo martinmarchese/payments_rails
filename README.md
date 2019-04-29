@@ -11,7 +11,7 @@ Install third party libraries
 
 Create and migrate database 
 
-* `$ rails db:create db:migrate`
+* `$ rails db:create db:migrate db:seed`
 
 Start the application
 

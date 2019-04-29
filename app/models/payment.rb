@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
-  belongs_to :building
+  belongs_to :building, required: true
   validates :unit, presence: true
   validates :date, presence: true
   validates :amount, presence: true
