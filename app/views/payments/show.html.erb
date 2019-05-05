@@ -1,33 +1,45 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-4'>
+            <img src="/images/logo.png" height="134px" width="230px" />
+        </div>
+        <div class='col-md-8 align-bottom'>
+        <h3>Informe de Pago</h3>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-6 offset-md-3'>
+            <p>
+            <strong>Edificio:</strong>
+            <%= @payment.building.formatted_name %>
+            </p>
 
-<p>
-<strong>Edificio:</strong>
-<%= @payment.building %>
-</p>
+            <p>
+            <strong>Unidad:</strong>
+            <%= @payment.unit %>
+            </p>
 
-<p>
-<strong>Unidad:</strong>
-<%= @payment.unit %>
-</p>
+            <p>
+            <strong>Fecha:</strong>
+            <%= @payment.date %>
+            </p>
 
-<p>
-<strong>Fecha:</strong>
-<%= @payment.date %>
-</p>
+            <p>
+            <strong>Nombre:</strong>
+            <%= @payment.name %>
+            </p>
 
-<p>
-<strong>Nombre:</strong>
-<%= @payment.name %>
-</p>
+            <p>
+            <strong>Monto:</strong>
+            <%= @payment.amount %>
+            </p>
 
-<p>
-<strong>Monto:</strong>
-<%= @payment.amount %>
-</p>
+            <p>
+            <strong>Comentarios:</strong>
+            <%= @payment.comments %>
+            </p>
 
-<p>
-<strong>Comentarios:</strong>
-<%= @payment.comments %>
-</p>
-
-<%= link_to 'Edit', edit_payment_path(@payment) %> |
-<%= link_to 'Back', payments_path %>
+            <%= link_to 'Editar', edit_payment_path(@payment), { :class=>"btn btn-primary" } %>
+        </div>
+    </div>
+</div>

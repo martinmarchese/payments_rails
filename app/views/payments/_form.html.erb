@@ -14,40 +14,41 @@
     </div>
   <% end %>
   
-  <p>
-    <%= form.label :building %><br>
-    <%= form.select :building_id, Building.all.collect{|b| [b.formatted_name, b.id]} %>
-  </p>
 
-  <p>
-    <%= form.label :unit %><br>
-    <%= form.text_field :unit %>
-  </p>
+  <div class="form-group">
+    <%= form.label :Edificio, class: "control-label" %><br>
+    <%= form.select :building_id, Building.all.collect{|b| [b.formatted_name, b.id]},{}, {class: "form-control"} %>
+  </div>
 
-  <p>
-      <%= form.label :date %><br>
+  <div class="form-group">
+    <%= form.label :Unidad, class: "control-label" %><br>
+    <%= form.text_field :unit, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+      <%= form.label :Fecha, class: "control-label" %><br>
       <%= datepicker(form, :date) %>
-  </p>
+  </div>
 
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
+  <div class="form-group">
+    <%= form.label :Nombre, class: "control-label" %><br>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
 
-  <p>
-    <%= form.label :amount %><br>
-    <%= form.text_field :amount %>
-  </p>
+  <div class="form-group">
+    <%= form.label :Monto, class: "control-label" %><br>
+    <%= form.text_field :amount, class: "form-control" %>
+  </div>
 
-  <p>
-    <%= form.label :comments %><br>
-    <%= form.text_area :comments %>
-  </p>
+  <div class="form-group">
+    <%= form.label :Comentario, class: "control-label" %><br>
+    <%= form.text_area :comments, class: "form-control" %>
+  </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
-   
+  <div class="form-group">
+    <%= form.submit 'Informar', :class => 'btn btn-primary' %>
+  </div>
+  
 <% end %>
 
 <script> </script>
