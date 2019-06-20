@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+    before_action :authenticate_user!
+    before_action :authenticate_admin!, only: [:edit, :update, :index, :destroy]
     def new
         @payment = Payment.new
     end
@@ -44,6 +46,6 @@ class PaymentsController < ApplicationController
 
     private
     def payment_params
-        params.require(:payment).permit(:building_id, :unit, :date, :name, :amount, :comments)
+        params.require(:payment).permit(:building_id, :unit, :date, :name, :amount, :comments, :user_id)
     end
 end

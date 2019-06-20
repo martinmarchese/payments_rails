@@ -65,4 +65,4 @@ gem 'jquery-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.1.1'
-
+gem 'devise'

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  devise_for :users
+  get 'payments/new'
 
   resources :payments
   
   #tell rails to take you to welcome controller on request to /
-  root 'welcome#index'
+  root 'payments#new'
 end

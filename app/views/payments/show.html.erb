@@ -5,14 +5,21 @@
         </div>
         <div class='col-md-8 align-bottom'>
         <div class="col-xs-12" style="height:25px;"></div>
-        <%= link_to 'Pagos', payments_url, { :class=>"btn btn-light" } %>
+        <% if current_user.admin? %>
+            <%= link_to 'Pagos', payments_url, { :class=>"btn btn-light" } %>
+        <% end %>
         <%= link_to 'Agregar Pago', new_payment_url, { :class=>"btn btn-light" } %>
         <div class="col-xs-12" style="height:50px;"></div>
-        <h3>Informe de Pago</h3>
+        <h3>Comprobante de Informe de Pago</h3>
         </div>
     </div>
     <div class='row'>
         <div class='col-md-6 offset-md-3'>
+            <p>
+            <strong>Código de Informe de Pago:</strong>
+            <%= @payment.id %>
+            </p>
+
             <p>
             <strong>Edificio:</strong>
             <%= @payment.building.formatted_name %>
@@ -42,8 +49,9 @@
             <strong>Comentarios:</strong>
             <%= @payment.comments %>
             </p>
-
-            <%= link_to 'Editar', edit_payment_path(@payment), { :class=>"btn btn-primary" } %>
+            <% if current_user.admin? %>
+                <%= link_to 'Editar', edit_payment_path(@payment), { :class=>"btn btn-primary" } %>
+            <% end %>
         </div>
     </div>
 </div>
