@@ -1,0 +1,13 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Payments") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Edificio Unidad Fecha Nombre Monto Comentarios Fecha_Creación Fecha_Modificación)
+  
+  # each payment is a row on your spreadsheet
+  @payments.each do |payment|
+    sheet.add_row [payment.building.formatted_name, payment.unit, payment.date, payment.name, payment.amount, payment.comments, payment.created_at, payment.updated_at]
+  end
+end
+
+

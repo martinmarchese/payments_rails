@@ -31,6 +31,10 @@ class PaymentsController < ApplicationController
 
     def index
         @payments = Payment.all
+        respond_to do |format|
+            format.html
+            format.xlsx
+        end
       end
 
     def show
