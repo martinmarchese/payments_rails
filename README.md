@@ -1,4 +1,5 @@
 # Payments
+A very simple custom payment information app for buldings administration.
 
 Ruby 2.6.1
 Rails 5.2.3

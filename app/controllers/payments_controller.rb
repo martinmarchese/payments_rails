@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+    before_action :authenticate_user!
+    before_action :authenticate_admin!, only: [:edit, :update, :index, :destroy]
     def new
         @payment = Payment.new
     end
@@ -29,6 +31,10 @@ class PaymentsController < ApplicationController
 
     def index
         @payments = Payment.all
+        respond_to do |format|
+            format.html
+            format.xlsx
+        end
       end
 
     def show
@@ -44,6 +50,6 @@ class PaymentsController < ApplicationController
 
     private
     def payment_params
-        params.require(:payment).permit(:building_id, :unit, :date, :name, :amount, :comments)
+        params.require(:payment).permit(:building_id, :unit, :date, :name, :amount, :comments, :user_id)
     end
 end
