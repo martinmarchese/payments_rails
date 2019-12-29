@@ -1,45 +1,41 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-4'>
+            <img src="/images/logo.png" height="134px" width="230px" />
+        </div>
+        <div class='col-md-8 align-bottom'>
+        <div class="col-xs-12" style="height:25px;"></div>
+        <%= link_to 'Pagos', payments_url(format: "html"), { :class=>"btn btn-light" } %>
+        <%= link_to 'Agregar Pago', new_payment_url, { :class=>"btn btn-light" } %>
+        <%= link_to "Exportar Pagos a Excel", payments_url(format: "xlsx"), { :class=>"btn btn-light" } %>
+        <div class="col-xs-12" style="height:50px;"></div>
+        <h3>Cambio de Contraseña</h3>
+        </div>
+      </div>
+      <div class='row'>
+      <div class='col-md-6 offset-md-3'>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
+        
+          <div class="field">
+            <%= f.label :password, "Nueva Contraseña", class: "control-label" %><br />
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> caracteres mínimo)</em><br />
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control"%>
+          </div>
+        
+          <div class="field">
+            <%= f.label :password_confirmation, "Confirme Nueva Contraseña", class: "control-label" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+          </div>
+        
+          <div class="actions">
+            <%= f.submit "Cambiar Contraseña" %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <%= f.hidden_field :is_password_change_required, value: false %>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

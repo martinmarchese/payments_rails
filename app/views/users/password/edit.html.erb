@@ -1,0 +1,41 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-4'>
+            <img src="/images/logo.png" height="134px" width="230px" />
+        </div>
+        <div class='col-md-8 align-bottom'>
+        <div class="col-xs-12" style="height:25px;"></div>
+        <%= link_to 'Pagos', payments_url(format: "html"), { :class=>"btn btn-light" } %>
+        <%= link_to 'Agregar Pago', new_payment_url, { :class=>"btn btn-light" } %>
+        <%= link_to "Exportar Pagos a Excel", payments_url(format: "xlsx"), { :class=>"btn btn-light" } %>
+        <div class="col-xs-12" style="height:50px;"></div>
+        <h3>Editar Informe de Pago</h3>
+        </div>
+      </div>
+      <div class='row'>
+      <h2>Cambio de Contraseña</h2>
+
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
+      
+        <div class="field">
+          <%= f.label :password, "Nueva Contraseña", class: "control-label" %><br />
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", {class: "form-control"} %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :password_confirmation, "Confirme Nueva Contraseña", class: "control-label" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", {class: "form-control"} %>
+        </div>
+      
+        <div class="actions">
+          <%= f.submit "Cambiar Contraseña" %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
