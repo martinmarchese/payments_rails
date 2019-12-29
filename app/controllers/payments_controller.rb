@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
     before_action :authenticate_user!
-    before_action :check_password_changed
+    before_action :check_password_change_required
     before_action :authenticate_admin!, only: [:edit, :update, :index, :destroy]
 
     def new
@@ -55,9 +55,9 @@ class PaymentsController < ApplicationController
         params.require(:payment).permit(:building_id, :unit, :date, :name, :amount, :comments, :user_id)
     end
 
-    def check_password_changed
-      puts current_user
-      unless current_user.is_password_changed
+    def check_password_change_required
+      puts "current_user #{current_user}"
+      if current_user.is_password_change_required
         redirect_to edit_user_registration_path, alert: "You must change your password before logging in for the first time"
       end
     end

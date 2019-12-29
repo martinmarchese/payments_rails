@@ -26,12 +26,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <%= f.hidden_field :is_password_changed, value: true %>
-
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+
+  <%= f.hidden_field :is_password_change_required, value: false %>
 
   <div class="actions">
     <%= f.submit "Update" %>
