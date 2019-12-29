@@ -27,6 +27,6 @@ Go to
 
 ```
 $ rails c
-$ @user = User.new(:building_id => '01', :username => '0143', :email => 'test@example.com', :password => 'password', :password_confirmation => 'password')
+$ @user = User.new(:building_id => '01', :username => 'user', :email => 'test@example.com', :password => 'password', :password_confirmation => 'password')
 $ @user.save
 ```

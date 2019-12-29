@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
     before_action :authenticate_user!
     before_action :authenticate_admin!, only: [:edit, :update, :index, :destroy]
+
     def new
         @payment = Payment.new
     end
