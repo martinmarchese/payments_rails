@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :building, required: true
   validates :email, uniqueness: true
-  validates :username, uniqueness: true 
+  validates :username, uniqueness: true
 end
