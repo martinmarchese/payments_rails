@@ -12,7 +12,7 @@ en:
       invalid: "Credenciales Inválidas."
       locked: "Su cuenta se encuentra bloqueada."
       last_attempt: "Cuenta con un intento mas antes de que su cuenta sea bloqueada."
-      not_found_in_database: ""Credenciales Inválidas."
+      not_found_in_database: "Credenciales Inválidas."
       timeout: "Sesión expirada, por favor ingrese nuevamente."
       unauthenticated: "Necesita Ingresar para Continuar."
       unconfirmed: "Debe confirmar su email antes de continuar."
