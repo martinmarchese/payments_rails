@@ -2,6 +2,18 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def admin_reset_password_form
+    respond_to do |format| format.html { render :template => "admin/resetPassword" } end
+  end
+
+  def admin_reset_password_do
+    @user = User.find(params[:user_id])
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password]
+    @user.update_attribute(:is_password_change_required, 'false')
+    @user.save
+  end
+
   protected
   def authenticate_admin!
     authenticate_user!
