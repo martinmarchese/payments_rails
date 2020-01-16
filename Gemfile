@@ -62,6 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jquery-rails'
+gem 'chosen-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.1.1'
