@@ -9,7 +9,9 @@
             <%= link_to 'Pagos', payments_url, { :class=>"btn btn-light" } %>
         <% end %>
         <%= link_to 'Agregar Pago', new_payment_url, { :class=>"btn btn-light" } %>
-        <div class="col-xs-12" style="height:50px;"></div>
+        <%= link_to "Salir", destroy_user_session_path, {:method => :delete, :class=>"btn btn-light"} %>
+        <div class="col-xs-12" style="height:50px;">
+        </div>
         <h3>Comprobante de Informe de Pago</h3>
         </div>
     </div>
