@@ -6,13 +6,15 @@ class ApplicationController < ActionController::Base
     render :template => "admin/resetPassword"
   end
 
-  #def admin_reset_password_do
-  #  @user = User.find(params[:user_id])
-  #  @user.password = params[:password]
-  #  @user.password_confirmation = params[:password]
-  #  @user.update_attribute(:is_password_change_required, 'false')
-  #  @user.save
-  #end
+  def admin_reset_password_do
+    @user = User.find(params[:user_id])
+    @newPassword = rand.to_s[2..6]
+    @user.password = @newPassword
+    @user.password_confirmation = @newPassword
+    @user.update_attribute(:is_password_change_required, 'true')
+    @user.save
+    redirect_to "/admin/passwordReset", alert: "La Password para " + @user.username + " es: " + @newPassword + "."
+  end
 
   protected
   def authenticate_admin!

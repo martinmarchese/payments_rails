@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get 'admin/passwordReset', to: 'application#admin_reset_password_form'
-  #post 'admin/passwordReset/do', to 'appication#admin_reset_password_do'
+  get 'admin/passwordResetConfirmation', to: 'application#admin_reset_password_confirmation'
+  post 'admin/passwordReset/do', to: 'application#admin_reset_password_do'
 
   # devise_for :users
   devise_for :users, :skip => [:registrations]                                          
