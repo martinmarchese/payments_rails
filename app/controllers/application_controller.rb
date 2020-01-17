@@ -1,6 +1,21 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_admin!, only: [:admin_reset_password_form, :admin_reset_password_do]
+
+  def admin_reset_password_form
+    render :template => "admin/resetPassword"
+  end
+
+  def admin_reset_password_do
+    @user = User.find(params[:user_id])
+    @newPassword = rand.to_s[2..6]
+    @user.password = @newPassword
+    @user.password_confirmation = @newPassword
+    @user.update_attribute(:is_password_change_required, 'true')
+    @user.save
+    redirect_to "/admin/passwordReset", alert: "La Password para " + @user.username + " es: " + @newPassword + "."
+  end
 
   protected
   def authenticate_admin!

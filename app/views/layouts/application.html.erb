@@ -19,3 +19,12 @@
     <%= yield %>
   </body>
 </html>
+<script>
+$(document).on('turbolinks:load', function() {
+  $('.chosen-select').chosen({
+    width: '190px',
+    max_selected_options: 1,
+    height: '50px'
+  })
+})
+</script>

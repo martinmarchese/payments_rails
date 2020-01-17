@@ -18,7 +18,7 @@
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <%= f.hidden_field :reset_password_token %>
-      
+        <%= f.hidden_field :is_password_change_required, value: false %>
         <div class="field">
           <%= f.label :password, "Nueva Contraseña", class: "control-label" %><br />
           <% if @minimum_password_length %>
