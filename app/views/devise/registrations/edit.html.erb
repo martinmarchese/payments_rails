@@ -14,12 +14,16 @@
       </div>
       <div class='row'>
       <div class='col-md-6 offset-md-3'>
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <%= f.hidden_field :reset_password_token %>
           <%= f.hidden_field :is_password_change_required, value: false %>
           <div class="field">
-            <%= f.label :password, "Nueva Contraseña", class: "control-label" %><br />
+            <%= f.label :current_password, "Contraseña Actual", class: "control-label" %><br />
+            <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+          </div>
+          <div class="field">
+            <%= f.label :password, "Nueva Contraseña ", class: "control-label" %>
             <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> caracteres mínimo)</em><br />
             <% end %>
