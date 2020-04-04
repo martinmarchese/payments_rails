@@ -1,0 +1,26 @@
+- unless smart_listing.empty?
+  %table
+    %thead
+      %tr
+        %th.col-md-3= "Edificio"
+        %th.col-md-3= "Unidad"
+        %th.col-md-4= "Fecha"
+        %th.col-md-4= "Nombre"
+        %th.col-md-4= "Monto"
+        %th{:colspan => 3}
+    %tbody
+      - smart_listing.collection.each do |payment|
+        %tr
+          %td= payment.building.formatted_name
+          %td= payment.unit
+          %td= payment.date
+          %td= payment.name
+          %td= payment.amount
+          %td= payment.unit
+          %td= link_to 'Show', payment_path(payment)
+          %td= link_to 'Edit', edit_payment_path(payment)
+          %td= link_to 'Destroy', payment_path(payment), method: :delete, data: { confirm: 'Are you sure?' }
+
+  = smart_listing.paginate
+- else
+  %p.warning No records!

@@ -1,7 +1,10 @@
 class PaymentsController < ApplicationController
+    include SmartListing::Helper::ControllerExtensions
+    helper  SmartListing::Helper
     before_action :authenticate_user!
     before_action :check_password_change_required
     before_action :authenticate_admin!, only: [:edit, :update, :index, :destroy]
+    
 
     def new
         @payment = Payment.new
@@ -32,11 +35,14 @@ class PaymentsController < ApplicationController
     end
 
     def index
-        @payments = Payment.all
-        respond_to do |format|
-            format.html
-            format.xlsx
-        end
+        @payments = smart_listing_create(:payments, Payment.all, partial: "payments/listing")
+    end
+
+      private
+
+      # A list of the param names that can be used for filtering the Product list
+      def filtering_params(params)
+        params.slice(:building)
       end
 
     def show

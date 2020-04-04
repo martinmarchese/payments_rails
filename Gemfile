@@ -70,3 +70,5 @@ gem 'devise'
 gem 'rubyzip', '= 1.0.0'
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
+gem "smart_listing"
+gem 'haml'
