@@ -35,7 +35,7 @@ class PaymentsController < ApplicationController
     end
 
     def index
-        @payments = smart_listing_create(:payments, Payment.all, partial: "payments/listing")
+      @payments = smart_listing_create(:payments, Payment.all, partial: "payments/listing")
     end
 
       private
