@@ -23,7 +23,6 @@ class PaymentsController < ApplicationController
 
     def create
         @payment = Payment.new(payment_params)
- 
         if @payment.save
             redirect_to @payment
         else
@@ -52,7 +51,7 @@ class PaymentsController < ApplicationController
 
     private
     def payment_params
-        params.require(:payment).permit(:building_id, :unit, :date, :name, :amount, :comments, :user_id)
+        params.require(:payment).permit(:building_id, :unit, :date, :name, :amount, :comments, :user_id, :building_name)
     end
 
     def check_password_change_required
