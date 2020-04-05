@@ -15,7 +15,7 @@
     </div>
     <div class='row'>
         <div class='col-md-10 offset-md-1'>
-          <table class="table" id="paymentsTable">
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col">Edificio</th>
@@ -46,9 +46,3 @@
         </div>
       </div>
     </div>
-    
-    <%= javascript_tag do %>
-      $(document).ready( function () {
-        $('#paymentsTable').DataTable();
-      });
-    <% end %>
