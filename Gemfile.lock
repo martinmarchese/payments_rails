@@ -260,7 +260,7 @@ DEPENDENCIES
   devise
   filterrific
   jbuilder (~> 2.5)
-  jquery-datatables-rails (~> 3.4)
+  jquery-datatables-rails (~> 3.4.0)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)

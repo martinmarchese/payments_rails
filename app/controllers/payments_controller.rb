@@ -34,7 +34,6 @@ class PaymentsController < ApplicationController
         @payments = Payment.all
         respond_to do |format|
             format.html
-            format.xlsx
         end
       end
 
