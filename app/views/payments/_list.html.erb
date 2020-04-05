@@ -7,7 +7,6 @@
         <div class="col-xs-12" style="height:25px;"></div>
         <%= link_to 'Pagos', payments_url(format: "html"), { :class=>"btn btn-light" } %>
         <%= link_to 'Agregar Pago', new_payment_url, { :class=>"btn btn-light" } %>
-        <%= link_to "Exportar Pagos a Excel", payments_url(format: "xlsx"), { :class=>"btn btn-light" } %>
         <%= link_to "Salir", destroy_user_session_path, {:method => :delete, :class=>"btn btn-light"} %>
         <div class="col-xs-12" style="height:50px;"></div>
         <h3>Editar Informe de Pago</h3>
@@ -15,7 +14,7 @@
     </div>
     <div class='row'>
         <div class='col-md-10 offset-md-1'>
-          <table class="table">
+          <table class="table" id="paymentsTable">
             <thead>
               <tr>
                 <th scope="col">Edificio</th>
@@ -23,7 +22,9 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Monto</th>
-                <th colspan="3" scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -34,9 +35,9 @@
                 <td><%= payment.date %></td>
                 <td><%= payment.name %></td>
                 <td><%= payment.amount %></td>
-                <td><%= link_to 'Show', payment_path(payment) %></td>
-                <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
-                <td><%= link_to 'Destroy', payment_path(payment),
+                <td><%= link_to 'Mostrar', payment_path(payment) %></td>
+                <td><%= link_to 'Editar', edit_payment_path(payment) %></td>
+                <td><%= link_to 'Eliminarcle', payment_path(payment),
                         method: :delete,
                         data: { confirm: 'Are you sure?' } %></td>
               </tr>
@@ -46,3 +47,43 @@
         </div>
       </div>
     </div>
+    
+    <script>
+      $(document).ready(function() {
+        $('#paymentsTable').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Exportar a Excel'}
+            ],
+            "language": {
+              "search": "Buscar:",
+              "info":           "Mostrando _START_ a _END_ de _TOTAL_ pagos",
+              "paginate": {
+                "next":       "Próxima",
+                "previous":   "Anterior"
+              }
+            },
+            "columns": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  { "orderable": false },
+                  { "orderable": false },
+                  { "orderable": false }
+             ]
+        } );
+      } );
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css"/>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
