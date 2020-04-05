@@ -19,10 +19,13 @@
     <%= form.label :Edificio, class: "control-label" %><br>
 
     <% if current_user.admin? %>
-      <%= form.select :building_id, Building.all.collect{|b| [b.formatted_name, b.id]},{}, {class: "form-control"} %>
+      <%= form.select :building_id, Building.all.collect{|b| [b.formatted_name, b.id]},{:prompt => 'Seleccionar'}, {class: "form-control"}%>
+      <%= form.hidden_field :building_name %>
+
     <% else %>
       <%= form.text_field :building_id, class: "form-control", value: current_user.building.formatted_name, readonly: true %>
       <%= form.hidden_field :building_id, value: current_user.building.id %>
+      <%= form.hidden_field :building_name, value: current_user.building.formatted_name %>
     <% end %>
   </div>
 
@@ -63,6 +66,16 @@
     <%= form.submit 'Informar', :class => 'btn btn-primary' %>
   </div>
 
+<% end %>
+
+<%= javascript_tag do %>
+  //Populate hidden field with data-attribute from select on quote-center page
+  $(document).ready(function(){
+    $("select#payment_building_id").change(function(){
+        var selectedBuilding = $(this).children("option:selected").text();
+        $("#payment_building_name").val(selectedBuilding);
+    });
+});
 <% end %>
 
 <script> </script>
