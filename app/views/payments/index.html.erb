@@ -23,6 +23,7 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Monto</th>
+                <th scope="col">Código</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -36,6 +37,7 @@
                 <td><%= payment.date %></td>
                 <td><%= payment.name %></td>
                 <td><%= payment.amount %></td>
+                <td><%= payment.id %></td>
                 <td><%= link_to 'Mostrar', payment_path(payment) %></td>
                 <td><%= link_to 'Editar', edit_payment_path(payment) %></td>
                 <td><%= link_to 'Eliminar', payment_path(payment),
@@ -82,7 +84,8 @@
 				 null,
 				 null,
 				 null,
-				 null,
+         null,
+         null,
 				 { "orderable": false },
 				 { "orderable": false },
 				 { "orderable": false }
