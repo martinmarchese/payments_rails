@@ -8,7 +8,9 @@ gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+# gem 'puma', '~> 3.11'
+# Use Passenger as the app server
+ gem "passenger"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -71,7 +73,7 @@ gem 'rubyzip', '= 1.0.0'
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
 gem 'filterrific'
-gem 'jquery-datatables-rails', '~> 3.4'
 gem 'bootstrap-sass'
 gem 'rails_db', '2.2.1'
 gem 'ransack', '2.3.0'
+gem 'jquery-datatables-rails', '~> 3.4.0'
