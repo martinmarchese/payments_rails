@@ -10,7 +10,7 @@ class CreatePayments < ActiveRecord::Migration[5.2]
 
       t.timestamps
 
-      ActiveRecord::Base.connection.execute("UPDATE SQLITE_SEQUENCE SET seq = 909 WHERE name = 'invoices'")
+      ActiveRecord::Base.connection.execute("UPDATE SQLITE_SEQUENCE SET seq = 10909 WHERE name = 'payments'")
     end
   end
 end
