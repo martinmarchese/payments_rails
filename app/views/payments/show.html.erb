@@ -15,13 +15,13 @@
         <h3>Comprobante de Informe de Pago</h3>
         </div>
     </div>
+    </br></br></br>
     <div class='row'>
         <div class='col-md-6 offset-md-3'>
             <p>
             <strong>Código de Informe de Pago:</strong>
             <%= @payment.id %>
             </p>
-
             <p>
             <strong>Edificio:</strong>
             <%= @payment.building.formatted_name %>
@@ -50,6 +50,9 @@
             <p>
             <strong>Comentarios:</strong>
             <%= @payment.comments %>
+            </p>
+            <p>
+            <button type="button" class='btn btn-light' onclick="window.print();return false;">Imprimir</button>
             </p>
             <% if current_user.admin? %>
                 <%= link_to 'Editar', edit_payment_path(@payment), { :class=>"btn btn-primary" } %>
