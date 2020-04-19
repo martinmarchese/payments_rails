@@ -284,8 +284,8 @@ DEPENDENCIES
   axlsx (= 2.0.1)
   axlsx_rails
   bootsnap (>= 1.1.0)
-  bootstrap (~> 4.3.1)
-  bootstrap-datepicker-rails (~> 1.6, >= 1.6.1.1)
+  bootstrap
+  bootstrap-datepicker-rails
   bootstrap-sass
   byebug
   capybara (>= 2.15)
