@@ -21,12 +21,3 @@ Start the application
 Go to
 
 [http://localhost:3000](http://localhost:3000)
-
-
-## Add Users to the database (development)
-
-```
-$ rails c
-$ @user = User.new(:building_id => '01', :username => 'user', :email => 'test@example.com', :password => 'password', :password_confirmation => 'password')
-$ @user.save
-```
