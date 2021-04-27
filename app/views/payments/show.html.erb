@@ -5,11 +5,11 @@
         </div>
         <div class='col-md-8 align-bottom'>
         <div class="col-xs-12" style="height:25px;"></div>
-        <% if current_user.admin? %>
+        <% if current_user and current_user.admin? %>
             <%= link_to 'Pagos', payments_url, { :class=>"btn btn-light" } %>
+            <%= link_to 'Agregar Pago', new_payment_url, { :class=>"btn btn-light" } %>
+            <%= link_to "Salir", destroy_user_session_path, {:method => :delete, :class=>"btn btn-light"} %>
         <% end %>
-        <%= link_to 'Agregar Pago', new_payment_url, { :class=>"btn btn-light" } %>
-        <%= link_to "Salir", destroy_user_session_path, {:method => :delete, :class=>"btn btn-light"} %>
         <div class="col-xs-12" style="height:50px;">
         </div>
         <h3>Comprobante de Informe de Pago</h3>
@@ -54,7 +54,7 @@
             <p>
             <button type="button" class='btn btn-light' onclick="window.print();return false;">Imprimir</button>
             </p>
-            <% if current_user.admin? %>
+            <% if current_user and current_user.admin? %>
                 <%= link_to 'Editar', edit_payment_path(@payment), { :class=>"btn btn-primary" } %>
             <% end %>
         </div>

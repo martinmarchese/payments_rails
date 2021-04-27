@@ -14,27 +14,24 @@
     </div>
   <% end %>
   
-
   <div class="form-group">
     <%= form.label :Edificio, class: "control-label" %><br>
-
-    <% if current_user.admin? %>
+      <% if current_user and current_user.admin? %>
       <%= form.select :building_id, Building.all.collect{|b| [b.formatted_name, b.id]},{:prompt => 'Seleccionar'}, {class: "form-control"}%>
       <%= form.hidden_field :building_name %>
-
     <% else %>
-      <%= form.text_field :building_id, class: "form-control", value: current_user.building.formatted_name, readonly: true %>
-      <%= form.hidden_field :building_id, value: current_user.building.id %>
-      <%= form.hidden_field :building_name, value: current_user.building.formatted_name %>
+      <%= form.text_field :building_id, class: "form-control", value: @payment.building.formatted_name, readonly: true %>
+      <%= form.hidden_field :building_id, value: @payment.building.id %>
+      <%= form.hidden_field :building_name, value: @payment.building.formatted_name %>
     <% end %>
   </div>
 
   <div class="form-group">
   <%= form.label :Unidad, class: "control-label" %><br>
-  <% if current_user.admin? %>
+  <% if current_user and current_user.admin? %>
     <%= form.text_field :unit, class: "form-control" %>
   <% else %>
-    <%= form.text_field :unit, class: "form-control", value: current_user.username.split(//).last(2).join, readonly: true %>
+    <%= form.text_field :unit, class: "form-control", readonly: true  %>
   <% end %>
   </div>
 
@@ -56,10 +53,6 @@
   <div class="form-group">
     <%= form.label :Comentario, class: "control-label" %><br>
     <%= form.text_area :comments, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
   <div class="form-group">
