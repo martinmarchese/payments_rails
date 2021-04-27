@@ -1,10 +1,21 @@
 class PaymentsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :check_password_change_required
-    before_action :authenticate_admin!, only: [:edit, :update, :index, :destroy]
+    #before_action :authenticate_user!
+    #before_action :check_password_change_required
+    before_action :authenticate_admin!, only: [:new, :edit, :update, :index, :destroy]
 
     def new
         @payment = Payment.new
+    end
+
+    def new_with_params
+        if params[:token]
+            building_id = Base64.decode64(params[:token]).split(/-/,2).first
+            unit = Base64.decode64(params[:token]).split(/-/,2).last
+            @payment = Payment.new(building_id: building_id, unit: unit)
+            render 'new'
+        else
+            render 'error'
+        end 
     end
 
     def edit
