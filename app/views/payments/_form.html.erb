@@ -20,7 +20,7 @@
       <%= form.select :building_id, Building.all.collect{|b| [b.formatted_name, b.id]},{:prompt => 'Seleccionar'}, {class: "form-control"}%>
       <%= form.hidden_field :building_name %>
     <% else %>
-      <%= form.text_field :building_id, class: "form-control", value: @payment.building.formatted_name, readonly: true %>
+      <%= form.text_field :building_id, class: "form-control", value: find_building_by_id_adm(@payment.building.idAdm).first.formatted_name, readonly: true %>
       <%= form.hidden_field :building_id, value: @payment.building.id %>
       <%= form.hidden_field :building_name, value: @payment.building.formatted_name %>
     <% end %>
